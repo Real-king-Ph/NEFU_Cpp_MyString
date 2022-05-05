@@ -19,6 +19,10 @@ DeAD_Line!!! 2022-05-07
 >
 ---
 
+github: <https://github.com/Real-king-Ph/NEFU_Cpp_MyString>
+gitee: <https://gitee.com/RKnFish/NEFU_Cpp_MyString>
+NEFU_Gitea: <http://10.181.194.51:3000/rk_gitea/NEFU_Cpp_MyString>
+
 TODO:
 
 - [ ] 构造函数
