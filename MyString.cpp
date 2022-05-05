@@ -127,7 +127,7 @@ MyString::MyString(const std::string& str) {
 MyString::MyString(const MyString& str) {
    auto len = str.length();
    recapacity(len);
-   for (int i = 0; i != str.length(); i++) {
+   for (unsigned i = 0; i != str.length(); i++) {
       (*this)[i] = str[i];
    }
    _size = str.length();
@@ -168,7 +168,7 @@ const char& MyString::operator[](int pos) const {
 MyString& MyString::operator=(const MyString& str) {
    auto len = str.length();
    recapacity(len);
-   for (int i = 0; i != str.length(); i++) {
+   for (unsigned i = 0u; i != str.length(); i++) {
       (*this)[i] = str[i];
    }
    _size = str.length();

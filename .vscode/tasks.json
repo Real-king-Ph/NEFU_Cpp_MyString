@@ -10,8 +10,8 @@
             "${fileDirname}\\main.cpp",
             "${fileDirname}\\MyString.cpp",
             "-o",
-            "-Wall",
             "${fileDirname}\\main.exe",
+            "-Wall",
             "-std=c++17",
             "-DDEBUG"
          ],
