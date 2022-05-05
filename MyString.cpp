@@ -28,7 +28,7 @@ void MyString::recapacity(unsigned size) {
    if (_self != nullptr) delete _self;
    _self = new_ch;
 
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cout << "_capa has been reset!\n";
 #endif
 }
@@ -40,7 +40,7 @@ void MyString::recapacity(unsigned size) {
  */
 void MyString::destory(char* target) {
    if (target != nullptr) delete (target);
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cout << "target has been deleted!\n";
 #endif
 }
@@ -63,9 +63,9 @@ void MyString::_capa_set(unsigned t) { _capa = t; }
  */
 MyString::MyString() {
    recapacity(0);
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cerr << "a MyString is Generated! \n";
-   if (_self != nullptr) {
+   if (_self == nullptr) {
       std::cerr << "wrong !\n";
       exit(-1);
    }
@@ -80,7 +80,8 @@ MyString::MyString() {
 MyString::MyString(char t) {
    recapacity(1);
    _self[0] = t;
-#ifdef DEBUG
+   _size = 1;
+#ifdef _DEBUG
    std::cerr << "A MyString is Generated! \n";
    std::cerr << *this << '\n';
 #endif
@@ -99,7 +100,7 @@ MyString::MyString(const char* str) {
    }
    _size = len;
 
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cerr << "A MyString is Generated! \n";
    std::cerr << *this << '\n';
 #endif
@@ -118,7 +119,7 @@ MyString::MyString(const std::string& str) {
    }
    _size = len;
 
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cerr << "A MyString is Generated! \n";
    std::cerr << *this << '\n';
 #endif
@@ -132,17 +133,21 @@ MyString::MyString(const MyString& str) {
    }
    _size = str.length();
 
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cerr << "A MyString is Generated! \n";
    std::cerr << *this << '\n';
 #endif
 }
 
-// MyString::MyString(int times, const MyString& str) : MyString() {
-//    for (int i = 0; i != times; i++) {
-//       this->append(str);
-//    }
-// }
+MyString::MyString(int times, const MyString& str) : MyString() {
+   for (int i = 0; i != times; i++) {
+      this->append(str);
+   }
+#ifdef _DEBUG
+   std::cerr << "A multi MyString is Generated! \n";
+   std::cerr << *this << '\n';
+#endif
+}
 
 // * * * * * * * * * * *
 // * base function
@@ -150,6 +155,18 @@ MyString::MyString(const MyString& str) {
 
 unsigned MyString::size() const { return _size; }
 unsigned MyString::length() const { return this->size(); }
+
+void MyString::append(const MyString& str) {
+   recapacity(_size + str.length());
+   for (auto i = _size; i != _size + str.length(); i++) {
+      (*this)[i] = str[i - _size];
+   }
+   _size += str.length();
+#ifdef _DEBUG
+   std::cout << "append once\n";
+   std::cout << *this << '\n';
+#endif
+}
 
 // * * * * * * * * * * *
 // * operator function
@@ -173,7 +190,7 @@ MyString& MyString::operator=(const MyString& str) {
    }
    _size = str.length();
 
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cerr << "MyString = d\n";
    std::cerr << *this << '\n';
 #endif
@@ -199,7 +216,7 @@ MyString::~MyString() {
    if (_self != nullptr) delete _self;
    _size = 0, _capa = 0;
 
-#ifdef DEBUG
+#ifdef _DEBUG
    std::cout << "_self has been deleted!\n";
 #endif
 }

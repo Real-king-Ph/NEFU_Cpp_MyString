@@ -5,10 +5,11 @@
 using namespace std;
 
 int main() {
-   string s = "xyz";
-   MyString x = s;
-   for (int i = -3; i < 3; i++) {
-      cout << x[i] << '\n';
-   }
-   x = MyString("uvx");
+   char a[] = "abc";
+   MyString(4, 'K');
+   MyString(4, "xyz");
+   MyString(2, a);
+   string texxt("112");
+   MyString x(3, texxt);
+   MyString(3, x);
 }

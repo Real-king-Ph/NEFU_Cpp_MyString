@@ -13,7 +13,7 @@
             "${fileDirname}\\main.exe",
             "-Wall",
             "-std=c++17",
-            "-DDEBUG"
+            "-D_DEBUG",
          ],
          "options": {
             "cwd": "${fileDirname}"

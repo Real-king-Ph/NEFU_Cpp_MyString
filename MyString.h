@@ -51,7 +51,7 @@ class MyString {
    MyString(const std::string&);
    MyString(const MyString&);
 
-   MyString(int, const MyString&);  // TODO: 2 MyString(numb, str)
+   MyString(int, const MyString&);  
 
    MyString(const MyString&, int,
             int);  // TODO: MyString(str ,start ,size)
@@ -61,7 +61,7 @@ class MyString {
    unsigned size() const;
    unsigned length() const;
 
-   void append(const MyString&);  // TODO: 1 append
+   void append(const MyString&);  
 
    // * operator function
    /**

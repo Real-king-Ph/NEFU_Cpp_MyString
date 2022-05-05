@@ -24,7 +24,7 @@ TODO:
 - [ ] 构造函数
   - [x] `MyString()`
   - [x] `MyString(formalstr)`
-  - [ ] `MyString(numb , formalstr)`
+  - [x] `MyString(numb , formalstr)`
   - [ ] `MyString(formalstr, start, length)`
 - [x] 对 `MyString` 对象赋值
   - [x] `= formalstr`
@@ -34,7 +34,7 @@ TODO:
 - [ ] `MyString` 对象中字符串的连接
   - [ ] `+ formalstr`
   - [ ] `+= formalstr`
-  - [ ] `append(formalstr)`
+  - [x] `append(formalstr)`
 - [ ] `MyString` 对象的比较
   - [ ] `<` is okay
   - [ ] `compare(formalstr1 , formalstr2)`
