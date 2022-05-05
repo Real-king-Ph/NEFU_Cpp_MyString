@@ -156,7 +156,7 @@ MyString::MyString(int times, const MyString& str) : MyString() {
 unsigned MyString::size() const { return _size; }
 unsigned MyString::length() const { return this->size(); }
 
-void MyString::append(const MyString& str) {
+MyString& MyString::append(const MyString& str) {
    recapacity(_size + str.length());
    for (auto i = _size; i != _size + str.length(); i++) {
       (*this)[i] = str[i - _size];
@@ -166,6 +166,7 @@ void MyString::append(const MyString& str) {
    std::cout << "append once\n";
    std::cout << *this << '\n';
 #endif
+   return *this;
 }
 
 // * * * * * * * * * * *
@@ -191,10 +192,25 @@ MyString& MyString::operator=(const MyString& str) {
    _size = str.length();
 
 #ifdef _DEBUG
-   std::cerr << "MyString = d\n";
+   std::cerr << "function = is running\n";
    std::cerr << *this << '\n';
 #endif
    return *this;
+}
+
+MyString MyString::operator+(const MyString& str) const {
+   MyString tmp = *this;
+   tmp.append(str);
+
+#ifdef _DEBUG
+   std::cerr << "function + is running\n";
+   std::cerr << "return value is : " << tmp << '\n';
+#endif
+   return tmp;
+}
+
+MyString& MyString::operator+=(const MyString& str) {
+   return this->append(str);
 }
 
 // * * * * * * * * * * *
@@ -217,6 +233,6 @@ MyString::~MyString() {
    _size = 0, _capa = 0;
 
 #ifdef _DEBUG
-   std::cout << "_self has been deleted!\n";
+   std::cerr << "_self has been deleted!\n";
 #endif
 }

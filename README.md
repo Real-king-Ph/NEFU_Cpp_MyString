@@ -16,7 +16,7 @@ DeAD_Line!!! 2022-05-07
 >              | MyString
 >              | const MyString
 > ```
-
+>
 ---
 
 TODO:
@@ -31,9 +31,9 @@ TODO:
 - [x] 求字符串的长度
   - [x] `length()`
   - [x] `size()`
-- [ ] `MyString` 对象中字符串的连接
-  - [ ] `+ formalstr`
-  - [ ] `+= formalstr`
+- [x] `MyString` 对象中字符串的连接
+  - [x] `+ formalstr`
+  - [x] `+= formalstr`
   - [x] `append(formalstr)`
 - [ ] `MyString` 对象的比较
   - [ ] `<` is okay
