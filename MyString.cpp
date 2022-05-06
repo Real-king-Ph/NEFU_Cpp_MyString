@@ -73,6 +73,7 @@ void MyString::_capa_set(unsigned t) { _capa = t; }
  */
 MyString::MyString() {
    recapacity(0);
+   _size = 0;
 #ifdef _DEBUG
    std::cerr << "a MyString is Generated! \n";
    if (_self == nullptr) {
@@ -426,6 +427,65 @@ signed MyString::find_last_not_of(const MyString& str,
    }
    if (ret == -1) return npos();
    return ret;
+}
+
+MyString& MyString::replace(const MyString& ori,
+                            const MyString& tar) {
+   auto x = this->find(ori);
+   if (x != (int)npos()) {
+      (*this) = substr(0, x) + tar + substr(0, x + ori.size());
+   }
+
+#ifdef _DEBUG
+   std::cerr << "replace function success !\n";
+   std::cerr << *this << '\n';
+#endif
+   return *this;
+}
+
+MyString& MyString::replace(int st, int sz, const MyString& tar) {
+   (*this) = substr(0, st) + tar + substr(sz + st);
+
+#ifdef _DEBUG
+   std::cerr << "replace function success !\n";
+   std::cerr << *this << '\n';
+#endif
+   return (*this);
+}
+
+MyString& MyString::replace(int st, int sz, int times,
+                            const MyString& tar) {
+   (*this) = substr(0, st) + MyString(times, tar) + substr(sz + st);
+
+#ifdef _DEBUG
+   std::cerr << "replace function success !\n";
+   std::cerr << *this << '\n';
+#endif
+   return (*this);
+}
+
+MyString& MyString::replace(int st, int sz, const MyString& tar,
+                            int st2, int sz2) {
+   (*this) =
+       substr(0, st) + MyString(tar, st2, sz2) + substr(sz + st);
+#ifdef _DEBUG
+   std::cerr << "replace function success !\n";
+   std::cerr << *this << '\n';
+#endif
+   return (*this);
+}
+
+MyString& MyString::replace(int st, int sz, int times,
+                            const MyString& tar, int st2, int sz2) {
+   (*this) = substr(0, st) +
+             MyString(times, MyString(tar, st2, sz2)) +
+             substr(sz + st);
+
+#ifdef _DEBUG
+   std::cerr << "replace function success !\n";
+   std::cerr << *this << '\n';
+#endif
+   return (*this);
 }
 
 // * ----------------------------------------------

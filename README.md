@@ -57,11 +57,11 @@ TODO:
   - [x] `find_first_not_of(formalstr, start)`
   - [x] `find_last_not_of(formalstr, start)`
   - [x] ✖️ 以上均有两个重载 `(formalstr[, start])`  
-- [ ] 替换子串
-  - [ ] `replace(origional_formalstr, after_formalstr)`
-  - [ ] `replace(start1, size1, formalstr)`
-  - [ ] `replace(start1, size1, times, formalstr)`
-  - [ ] `replace(start1, size1, times, formalstr, start2, size2)`
+- [x] 替换子串
+  - [x] `replace(origional_formalstr, after_formalstr)`
+  - [x] `replace(start1, size1, formalstr)`
+  - [x] `replace(start1, size1, times, formalstr)`
+  - [x] `replace(start1, size1, times, formalstr, start2, size2)`
 - [x] 删除子串
   - [x] `erase(formalstr)`
   - [x] `erase(start, end)`
@@ -217,15 +217,15 @@ TODO:
 
    ```cpp
    MyString s1("Real Steel");
-   s1.replace(1, 3, "123456", 2, 4);  // 用 "123456" 的子串(2,4) 
+   s1.replace(1, 3, "123456", 2, 4);  // 用 "123456" 的子串(2,4)
                                       // 替换 s1 的子串(1,3)
    cout << s1 << endl;                // 输出 R3456 Steel
    MyString s2("Harry Potter");
-   s2.replace(2, 3, 5, '0');          // 用 5 个 '0' 替换子串(2,3)
-   cout << s2 << endl;                // 输出 HaOOOOO Potter
-   int n = s2.find("OOOOO");          // 查找子串 "00000" 的位置，n=2
-   s2.replace(n, 5, "XXX");           // 将子串(n,5)替换为"XXX"
-   cout << s2 < < endl;               // 输出 HaXXX Potter
+   s2.replace(2, 3, 5, '0');  // 用 5 个 '0' 替换子串(2,3)
+   cout << s2 << endl;        // 输出 Ha00000 Potter
+   int n = s2.find("00000");  // 查找子串 "00000" 的位置，n=2
+   s2.replace(n, 5, "XXX");   // 将子串(n,5)替换为"XXX"
+   cout << s2 << endl;        // 输出 HaXXX Potter
    ```
 
 10. 删除子串

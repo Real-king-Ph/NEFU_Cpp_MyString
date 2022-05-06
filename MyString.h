@@ -192,6 +192,13 @@ class MyString {
    signed find_first_not_of(const MyString&, int start = 0) const;
    signed find_last_not_of(const MyString&, int start = 0) const;
 
+   MyString& replace(const MyString&, const MyString&);
+   MyString& replace(int, int, const MyString&);
+   MyString& replace(int, int, int, const MyString&);
+   MyString& replace(int, int, const MyString&, int, int);
+   MyString& replace(int, int, int, const MyString&, int,
+                     int);  // TODO
+
    // * friend function
    /**
     * @brief Mystream std::out
