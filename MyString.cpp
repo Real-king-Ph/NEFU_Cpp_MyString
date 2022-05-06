@@ -1,3 +1,13 @@
+/**
+ * @file MyString.cpp
+ * @author Rk_ph (real-king-ph.github.io)
+ * @brief NEFU c++ Mystring
+ * @version 0.1
+ * @date 2022-05-05
+ *
+ * @copyright Copyright (c) 2022 Rk_ph All right reserved
+ */
+
 #include "MyString.h"
 
 // * ----------------------------------------------
@@ -256,12 +266,49 @@ bool MyString::operator==(const MyString& str) const {
 // * advanced function
 // * * * * * * * * * * *
 
+MyString& MyString::erase(const MyString& str) {
+   auto x = 0u;
+   x = this->find(str, x);
+   if (x != MyString::npos()) {
+      for (int i = x; i != int(size() - str.size()); i++) {
+         (*this)[i] = (*this)[i + str.size()];
+      }
+      _size -= str.size();
+   }
+   return *this;
+}
+
+MyString& MyString::erase(int start) {
+   _size = start;
+   return *this;
+}
+MyString& MyString::erase(int start, int size) {
+   for (int i = start; i != int(this->size() - size); i++) {
+      (*this)[i] = (*this)[i + size];
+   }
+   _size -= size;
+   return *this;
+}
+
 MyString MyString::substr(int start) const {
    return MyString((*this), start, (*this).length() - start);
 }
 
 MyString MyString::substr(int start, int len) const {
    return MyString((*this), start, len);
+}
+
+MyString& MyString::insert(int pos, const MyString& str) {
+   *(this) = (*this).substr(0, pos) + str + (*this).substr(pos);
+#ifdef _DEBUG
+   std::cerr << "MyString Insert Success \n";
+   std::cerr << *this << '\n';
+#endif
+   return (*this);
+}
+
+MyString& MyString::insert(int pos, int times, const MyString& str) {
+   return this->insert(pos, MyString(times, str));
 }
 
 int MyString::Compare(const MyString& str) const {
@@ -308,7 +355,7 @@ signed MyString::find(const MyString& str, int start) const {
    return npos();
 }
 
-signed MyString::find(const MyString& str, int start) const {
+signed MyString::rfind(const MyString& str, int start) const {
    if (str.size() == 0) return npos();
    std::vector<int> nxt(str.size());
    nxt[0] = -1;
@@ -355,7 +402,8 @@ signed MyString::find_last_of(const MyString& str, int start) const {
    return ret;
 }
 
-signed MyString::find_first_not_of(const MyString& str, int start) const {
+signed MyString::find_first_not_of(const MyString& str,
+                                   int start) const {
    std::set<char> s;
    for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
    for (int i = start; i != (int)length(); i++) {
@@ -366,7 +414,8 @@ signed MyString::find_first_not_of(const MyString& str, int start) const {
    return npos();
 }
 
-signed MyString::find_last_not_of(const MyString& str, int start) const {
+signed MyString::find_last_not_of(const MyString& str,
+                                  int start) const {
    std::set<char> s;
    int ret = -1;
    for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);

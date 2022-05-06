@@ -27,9 +27,10 @@
  */
 class MyString {
   private:
-   char* _self = nullptr;  ///< base of MyString
-   unsigned _size = 0;     ///< size of MyString
-   unsigned _capa = 0;     ///< the capacity of MyString
+   const static unsigned nps = 1e9 + 777;  ///< nps
+   char* _self = nullptr;                  ///< base of MyString
+   unsigned _size = 0;                     ///< size of MyString
+   unsigned _capa = 0;  ///< the capacity of MyString
 
   private:
    void recapacity(unsigned);
@@ -80,7 +81,7 @@ class MyString {
 
    unsigned size() const;
    unsigned length() const;
-   unsigned npos() const { return size(); }
+   unsigned npos() const { return nps; }
 
    MyString& append(const MyString&);
    void swap(MyString&);
@@ -121,6 +122,21 @@ class MyString {
 
    // * advanced function
 
+   MyString& erase(const MyString&);
+   /**
+    * @brief 删除 start 后所有字符串
+    *
+    * @param start
+    */
+   MyString& erase(int start);
+   /**
+    * @brief 删除从 start 开始的 size 个字符串
+    *
+    * @param start
+    * @param size
+    */
+   MyString& erase(int start, int size);
+
    /**
     * @brief 切割子串
     *
@@ -128,6 +144,7 @@ class MyString {
     * @return MyString 返回从 start 一直到末尾的子串。
     *
     */
+
    MyString substr(int start) const;
    /**
     * @brief 切割子串
@@ -137,6 +154,25 @@ class MyString {
     * @return MyString 返回从 start 开始长尾 len 的子串
     */
    MyString substr(int start, int len) const;
+
+   /**
+    * @brief 在 pos 的位置上插入一个字符串
+    *
+    * @param pos
+    * @param str
+    * @return MyString&
+    */
+   MyString& insert(int pos, const MyString& str);
+
+   /**
+    * @brief 在 pos 的位置上插入 times 个字符串
+    *
+    * @param pos
+    * @param times
+    * @param str
+    * @return MyString&
+    */
+   MyString& insert(int pos, int times, const MyString& str);
 
    int Compare(const MyString&) const;
    int Compare(int, int, const MyString&) const;

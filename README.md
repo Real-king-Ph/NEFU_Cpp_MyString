@@ -58,14 +58,17 @@ TODO:
   - [x] `find_last_not_of(formalstr, start)`
   - [x] ✖️ 以上均有两个重载 `(formalstr[, start])`  
 - [ ] 替换子串
-  - [ ] `replace(origion_formalstr, after_formalstr)`
-- [ ] 删除子串
-  - [ ] `erase(formalstr)`
-  - [ ] `erase(start, end)`
-  - [ ] `erase(start)`
-- [ ] 插入字符串
-  - [ ] `insert(start, formalstr)`
-  - [ ] `insert(start, number, formalstr)`
+  - [ ] `replace(origional_formalstr, after_formalstr)`
+  - [ ] `replace(start1, size1, formalstr)`
+  - [ ] `replace(start1, size1, times, formalstr)`
+  - [ ] `replace(start1, size1, times, formalstr, start2, size2)`
+- [x] 删除子串
+  - [x] `erase(formalstr)`
+  - [x] `erase(start, end)`
+  - [x] `erase(start)`
+- [x] 插入字符串
+  - [x] `insert(start, formalstr)`
+  - [x] `insert(start, number, formalstr)`
 - [ ] 将 `MyString` 对象作为流处理(选做)
   - [ ] `CLASS iMyStringstream`
   - [ ] `CLASS oMyStringstream`
