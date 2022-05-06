@@ -84,6 +84,15 @@ class MyString {
 
    MyString& append(const MyString&);
    void swap(MyString&);
+   MyString& assign(const MyString& str) {
+      return this->operator=(str);
+   }
+   MyString& assign(int times, const MyString& str) {
+      return (*this) = MyString(times, str);
+   }
+   MyString& assign(const MyString& str, int start, int end) {
+      return (*this) = MyString(str, start, end);
+   }
 
    // * operator function
    /**
@@ -144,8 +153,8 @@ class MyString {
    signed rfind(const MyString&, int start = 0) const;
    signed find_first_of(const MyString&, int start = 0) const;
    signed find_last_of(const MyString&, int start = 0) const;
-	signed find_first_not_of(const MyString&, int start = 0) const;
-	signed find_last_not_of(const MyString&, int start = 0) const;
+   signed find_first_not_of(const MyString&, int start = 0) const;
+   signed find_last_not_of(const MyString&, int start = 0) const;
 
    // * friend function
    /**
