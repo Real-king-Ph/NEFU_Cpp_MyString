@@ -149,6 +149,19 @@ MyString::MyString(int times, const MyString& str) : MyString() {
 #endif
 }
 
+MyString::MyString(const MyString& str, int start, int leng) {
+   recapacity(leng);
+   for (int i = 0; i != leng; i++) {
+      (*this)[i] = str[i + start];
+   }
+
+#ifdef _DEBUG
+   std::cerr << "MyString has Generated! div success!\n";
+   std::cerr << *this << '\n';
+#endif
+
+}
+
 // * * * * * * * * * * *
 // * base function
 // * * * * * * * * * * *

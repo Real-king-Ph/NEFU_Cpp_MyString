@@ -50,11 +50,29 @@ class MyString {
    MyString(const char*);
    MyString(const std::string&);
    MyString(const MyString&);
-
-   MyString(int, const MyString&);
-
-   MyString(const MyString&, int,
-            int);  // TODO: MyString(str ,start ,size)
+   /**
+    * @brief Construct a new My String object
+    *
+    * @param times
+    * @param str
+    *
+    * 生成 times 次的 str
+    * 例如 str = "abc"
+    * 3 "abc" --> abcabcabc
+    */
+   MyString(int times, const MyString& str);
+   /**
+    * @brief Construct a new My String object
+    * 
+    * @param str 
+    * @param fir 
+    * @param len 
+    * 
+    * 对一个字符做裁剪，生成从 [fir] 开始长 len 的字符串
+    * 例如 "abcde" 1 3
+    * bcd
+    */
+   MyString(const MyString& str, int fir, int len);
 
    // * base function
 
