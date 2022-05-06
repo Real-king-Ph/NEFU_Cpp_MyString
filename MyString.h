@@ -78,6 +78,7 @@ class MyString {
 
    unsigned size() const;
    unsigned length() const;
+   unsigned npos() const { return size(); }
 
    MyString& append(const MyString&);
    void swap(MyString&);
@@ -138,6 +139,7 @@ class MyString {
     * @return std::ostream&
     */
    friend std::ostream& operator<<(std::ostream&, const MyString&);
+   friend std::istream& operator>>(std::istream&, MyString&);
    ~MyString();
 };
 

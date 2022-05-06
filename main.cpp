@@ -5,8 +5,10 @@
 using namespace std;
 
 int main() {
-   string s1, s2;
+   MyString s1, s2;
    cin >> s1 >> s2;
-   cout << " Compare " << MyString(s1).Compare(s2) << '\n';
+   s1.swap(s2);
+   cout << s1 << '\n' << s2 << '\n';
+
    return 0;
 }

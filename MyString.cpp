@@ -176,10 +176,16 @@ MyString& MyString::append(const MyString& str) {
    }
    _size += str.length();
 #ifdef _DEBUG
-   std::cout << "append once\n";
-   std::cout << *this << '\n';
+   std::cerr << "append once\n";
+   std::cerr << *this << '\n';
 #endif
    return *this;
+}
+
+void MyString::swap(MyString& str) {
+   std::swap(_size, str._size);
+   std::swap(_capa, str._capa);
+   std::swap(_self, str._self);
 }
 
 // * * * * * * * * * * *
@@ -293,6 +299,13 @@ std::ostream& operator<<(std::ostream& out, const MyString& str) {
       out << str._self[i];
    }
    return out;
+}
+
+std::istream& operator>>(std::istream& in, MyString& str) {
+   std::string s;
+   in >> s;
+   str.append(s);
+   return in;
 }
 
 MyString::~MyString() {

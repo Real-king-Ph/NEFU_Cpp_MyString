@@ -47,8 +47,8 @@ TODO:
 - [x] 求 `MyString` 对象的子串
   - [x] `substr(start)`
   - [x] `substr(start , size)`
-- [ ] 交换两个`MyString`对象的内容
-  - [ ] `swap(MyString&)`
+- [x] 交换两个`MyString`对象的内容
+  - [x] `swap(MyString&)`
 - [ ] 查找子串和字符
   - [ ] `find(formalstr, start)`
   - [ ] `rfind(formalstr, start)`
