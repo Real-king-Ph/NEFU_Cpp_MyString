@@ -79,7 +79,7 @@ MyString::MyString() {
  */
 MyString::MyString(char t) {
    recapacity(1);
-   _self[0] = t;
+   (*this)[0] = t;
    _size = 1;
 #ifdef _DEBUG
    std::cerr << "A MyString is Generated! \n";
@@ -96,7 +96,7 @@ MyString::MyString(const char* str) {
    auto len = strlen(str);
    recapacity(len);
    for (unsigned i = 0; i != len; i++) {
-      _self[i] = str[i];
+      (*this)[i] = str[i];
    }
    _size = len;
 
@@ -115,7 +115,7 @@ MyString::MyString(const std::string& str) {
    auto len = str.length();
    recapacity(len);
    for (unsigned i = 0; i != len; i++) {
-      _self[i] = str[i];
+      (*this)[i] = str[i];
    }
    _size = len;
 
@@ -229,6 +229,14 @@ MyString& MyString::operator+=(const MyString& str) {
 // * * * * * * * * * * *
 // * advanced function
 // * * * * * * * * * * *
+
+MyString MyString::substr(int start) const {
+   return MyString((*this), start, (*this).length() - start);
+}
+
+MyString MyString::substr(int start, int len) const {
+   return MyString((*this), start, len);
+}
 
 // * ----------------------------------------------
 // * friend function

@@ -5,6 +5,6 @@
 using namespace std;
 
 int main() {
-   MyString("string", 1, 2);
+   cout << MyString("abcdefg").substr(1, 3) << '\n';
    return 0;
 }

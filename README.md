@@ -42,9 +42,9 @@ TODO:
 - [ ] `MyString` 对象的比较
   - [ ] `<` is okay
   - [ ] `compare(formalstr1 , formalstr2)`
-- [ ] 求 `MyString` 对象的子串
-  - [ ] `substr(start)`
-  - [ ] `substr(start , size)`
+- [x] 求 `MyString` 对象的子串
+  - [x] `substr(start)`
+  - [x] `substr(start , size)`
 - [ ] 交换两个`MyString`对象的内容
   - [ ] `swap(MyString&)`
 - [ ] 查找子串和字符

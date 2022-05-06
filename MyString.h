@@ -63,11 +63,11 @@ class MyString {
    MyString(int times, const MyString& str);
    /**
     * @brief Construct a new My String object
-    * 
-    * @param str 
-    * @param fir 
-    * @param len 
-    * 
+    *
+    * @param str
+    * @param fir
+    * @param len
+    *
     * 对一个字符做裁剪，生成从 [fir] 开始长 len 的字符串
     * 例如 "abcde" 1 3
     * bcd
@@ -102,6 +102,23 @@ class MyString {
    MyString& operator+=(const MyString&);
 
    // * advanced function
+
+   /**
+    * @brief 切割子串
+    *
+    * @param start 起始点
+    * @return MyString 返回从 start 一直到末尾的子串。
+    *
+    */
+   MyString substr(int start) const;
+   /**
+    * @brief 切割子串
+    *
+    * @param start
+    * @param len
+    * @return MyString 返回从 start 开始长尾 len 的子串
+    */
+   MyString substr(int start, int len) const;
 
    // * friend function
    /**
