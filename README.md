@@ -25,11 +25,11 @@ NEFU_Gitea: <http://10.181.194.51:3000/rk_gitea/NEFU_Cpp_MyString>
 
 TODO:
 
-- [ ] 构造函数
+- [x] 构造函数
   - [x] `MyString()`
   - [x] `MyString(formalstr)`
   - [x] `MyString(numb , formalstr)`
-  - [ ] `MyString(formalstr, start, length)`
+  - [x] `MyString(formalstr, start, length)`
 - [x] 对 `MyString` 对象赋值
   - [x] `= formalstr`
 - [x] 求字符串的长度
