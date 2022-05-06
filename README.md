@@ -38,8 +38,8 @@ TODO:
   - [x] `+ formalstr`
   - [x] `+= formalstr`
   - [x] `append(formalstr)`
-- [ ] `MyString` 对象的比较
-  - [ ] `<` is okay
+- [x] `MyString` 对象的比较
+  - [x] `<` is okay
   - [x] `compare(formalstr)`
   - [x] `compare(start1, len1, formalstr)`
   - [x] `compare(start1, len1, formalstr, start2, len2)`

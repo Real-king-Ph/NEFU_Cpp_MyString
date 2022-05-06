@@ -226,6 +226,26 @@ MyString& MyString::operator+=(const MyString& str) {
    return this->append(str);
 }
 
+bool MyString::operator<(const MyString& str) const {
+   return this->Compare(str) == -1;
+}
+
+bool MyString::operator<=(const MyString& str) const {
+   return !((*this) > str);
+}
+
+bool MyString::operator>(const MyString& str) const {
+   return this->Compare(str) == 1;
+}
+
+bool MyString::operator>=(const MyString& str) const {
+   return !((*this) < str);
+}
+
+bool MyString::operator==(const MyString& str) const {
+   return this->Compare(str) == 0;
+}
+
 // * * * * * * * * * * *
 // * advanced function
 // * * * * * * * * * * *
