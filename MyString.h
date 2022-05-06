@@ -120,6 +120,11 @@ class MyString {
     */
    MyString substr(int start, int len) const;
 
+   int Compare(const MyString&) const; 
+   int Compare(int, int, const MyString&) const; 
+   int Compare(const MyString&, int, int) const;
+   int Compare(int, int, const MyString&, int, int) const; 
+
    // * friend function
    /**
     * @brief Mystream std::out

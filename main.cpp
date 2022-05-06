@@ -5,6 +5,8 @@
 using namespace std;
 
 int main() {
-   cout << MyString("abcdefg").substr(1, 3) << '\n';
+   string s1, s2;
+   cin >> s1 >> s2;
+   cout << " Compare " << MyString(s1).Compare(s2) << '\n';
    return 0;
 }

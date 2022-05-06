@@ -2,8 +2,7 @@
 
 > NEFU C++ 选修课作业
 
-DeAD_Line!!! 2022-05-07
-项目设计：截止时间2022年5月7日
+DeAD_Line!!! 2022-05-07  
 编程实现仿`string`类设计的字符串类`MyString`，并自行设计测试该类功能的示例程序。
 
 > ```text
@@ -41,7 +40,10 @@ TODO:
   - [x] `append(formalstr)`
 - [ ] `MyString` 对象的比较
   - [ ] `<` is okay
-  - [ ] `compare(formalstr1 , formalstr2)`
+  - [x] `compare(formalstr)`
+  - [x] `compare(start1, len1, formalstr)`
+  - [x] `compare(start1, len1, formalstr, start2, len2)`
+  - [x] `compare(formalstr, start2, len2)`
 - [x] 求 `MyString` 对象的子串
   - [x] `substr(start)`
   - [x] `substr(start , size)`

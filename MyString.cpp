@@ -29,7 +29,7 @@ void MyString::recapacity(unsigned size) {
    _self = new_ch;
 
 #ifdef _DEBUG
-   std::cout << "_capa has been reset!\n";
+   std::cerr << "_capa has been reset!\n";
 #endif
 }
 
@@ -41,7 +41,7 @@ void MyString::recapacity(unsigned size) {
 void MyString::destory(char* target) {
    if (target != nullptr) delete (target);
 #ifdef _DEBUG
-   std::cout << "target has been deleted!\n";
+   std::cerr << "target has been deleted!\n";
 #endif
 }
 
@@ -236,6 +236,32 @@ MyString MyString::substr(int start) const {
 
 MyString MyString::substr(int start, int len) const {
    return MyString((*this), start, len);
+}
+
+int MyString::Compare(const MyString& str) const {
+   for (unsigned i = 0; i != this->length() && i != str.length();
+        i++) {
+      if ((*this)[i] > str[i]) return 1;
+      if ((*this)[i] < str[i]) return -1;
+   }
+   if (this->length() == str.length()) return 0;
+   return (this->length() > str.length()) * 2 - 1;
+}
+
+int MyString::Compare(int start1, int len1,
+                      const MyString& str) const {
+   return this->substr(start1, len1).Compare(str);
+}
+
+int MyString::Compare(const MyString& str, int start2,
+                      int len2) const {
+   return this->Compare(str.substr(start2, len2));
+}
+
+int MyString::Compare(int start1, int len1, const MyString& str,
+                      int start2, int len2) const {
+   return this->substr(start1, len1)
+       .Compare(str.substr(start2, len2));
 }
 
 // * ----------------------------------------------
