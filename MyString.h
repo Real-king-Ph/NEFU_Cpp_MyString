@@ -15,6 +15,8 @@
 #include <iostream>
 #include <istream>
 #include <ostream>
+#include <set>
+#include <vector>
 
 /**
  * @brief MySring is a NEFU_Mirror of std::string
@@ -131,6 +133,19 @@ class MyString {
    int Compare(int, int, const MyString&) const;
    int Compare(const MyString&, int, int) const;
    int Compare(int, int, const MyString&, int, int) const;
+
+   /**
+    * @brief 查找子串
+    * @param str-MyString 目标
+    * @param start 选择从什么地方开始匹配
+    * @return signed
+    */
+   signed find(const MyString&, int start = 0) const;
+   signed rfind(const MyString&, int start = 0) const;
+   signed find_first_of(const MyString&, int start = 0) const;
+   signed find_last_of(const MyString&, int start = 0) const;
+	signed find_first_not_of(const MyString&, int start = 0) const;
+	signed find_last_not_of(const MyString&, int start = 0) const;
 
    // * friend function
    /**

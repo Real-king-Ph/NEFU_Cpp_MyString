@@ -290,6 +290,95 @@ int MyString::Compare(int start1, int len1, const MyString& str,
        .Compare(str.substr(start2, len2));
 }
 
+signed MyString::find(const MyString& str, int start) const {
+   if (str.size() == 0) return npos();
+   std::vector<int> nxt(str.size());
+   nxt[0] = -1;
+   for (int i = 1, j = 0; i != (int)str.size(); i++) {
+      while (j != -1 && str[i] != str[j]) j = nxt[j];
+      nxt[i] = j;
+      j++;
+   }
+
+   for (int i = 0, j = 0; i != (int)size() - start; i++) {
+      while (j != -1 && (*this)[i] != str[j]) j = nxt[j];
+      j++;
+      if (j == (int)str.size()) return i - str.size() + 1;
+   }
+   return npos();
+}
+
+signed MyString::find(const MyString& str, int start) const {
+   if (str.size() == 0) return npos();
+   std::vector<int> nxt(str.size());
+   nxt[0] = -1;
+   int ret = -1;
+   for (int i = 1, j = 0; i != (int)str.size(); i++) {
+      while (j != -1 && str[i] != str[j]) j = nxt[j];
+      nxt[i] = j;
+      j++;
+   }
+
+   for (int i = 0, j = 0; i != (int)size() - start; i++) {
+      while (j != -1 && (*this)[i] != str[j]) j = nxt[j];
+      j++;
+      if (j == (int)str.size()) {
+         ret = i - str.size() + 1;
+         j = nxt[j];
+      }
+   }
+   if (ret != -1) return ret;
+   return npos();
+}
+
+signed MyString::find_first_of(const MyString& str, int start) const {
+   std::set<char> s;
+   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   for (int i = start; i != (int)length(); i++) {
+      if (s.count((*this)[i])) {
+         return i;
+      }
+   }
+   return npos();
+}
+
+signed MyString::find_last_of(const MyString& str, int start) const {
+   std::set<char> s;
+   int ret = -1;
+   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   for (int i = start; i != (int)length(); i++) {
+      if (s.count((*this)[i])) {
+         ret = i;
+      }
+   }
+   if (ret == -1) return npos();
+   return ret;
+}
+
+signed MyString::find_first_not_of(const MyString& str, int start) const {
+   std::set<char> s;
+   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   for (int i = start; i != (int)length(); i++) {
+      if (!s.count((*this)[i])) {
+         return i;
+      }
+   }
+   return npos();
+}
+
+signed MyString::find_last_not_of(const MyString& str, int start) const {
+   std::set<char> s;
+   int ret = -1;
+   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   for (int i = start; i != (int)length(); i++) {
+      if (!s.count((*this)[i])) {
+         ret = i;
+      }
+   }
+   if (ret == -1) return npos();
+   return ret;
+}
+
 // * ----------------------------------------------
 // * friend function
 // * ----------------------------------------------

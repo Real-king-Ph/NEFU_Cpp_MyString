@@ -49,13 +49,13 @@ TODO:
   - [x] `substr(start , size)`
 - [x] 交换两个`MyString`对象的内容
   - [x] `swap(MyString&)`
-- [ ] 查找子串和字符
-  - [ ] `find(formalstr, start)`
-  - [ ] `rfind(formalstr, start)`
-  - [ ] `find_first_of(formalstr, start)`
-  - [ ] `find_last_of(formalstr, start)`
-  - [ ] `find_first_not_of(formalstr, start)`
-  - [ ] `find_last_not_of(formalstr, start)`
+- [x] 查找子串和字符
+  - [x] `find(formalstr, start)`
+  - [x] `rfind(formalstr, start)`
+  - [x] `find_first_of(formalstr, start)`
+  - [x] `find_last_of(formalstr, start)`
+  - [x] `find_first_not_of(formalstr, start)`
+  - [x] `find_last_not_of(formalstr, start)`
   - [x] ✖️ 以上均有两个重载 `(formalstr[, start])`  
 - [ ] 替换子串
   - [ ] `replace(origion_formalstr, after_formalstr)`
