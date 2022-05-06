@@ -5,6 +5,6 @@
 using namespace std;
 
 int main() {
-   MyString("abc") + MyString("xyz");
+   MyString("string", 1, 2);
    return 0;
 }

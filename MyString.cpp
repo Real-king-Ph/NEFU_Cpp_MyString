@@ -154,12 +154,12 @@ MyString::MyString(const MyString& str, int start, int leng) {
    for (int i = 0; i != leng; i++) {
       (*this)[i] = str[i + start];
    }
+   _size = leng;
 
 #ifdef _DEBUG
    std::cerr << "MyString has Generated! div success!\n";
    std::cerr << *this << '\n';
 #endif
-
 }
 
 // * * * * * * * * * * *
