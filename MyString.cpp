@@ -502,7 +502,7 @@ std::ostream& operator<<(std::ostream& out, const MyString& str) {
 std::istream& operator>>(std::istream& in, MyString& str) {
    std::string s;
    in >> s;
-   str.append(s);
+   str = s;
    return in;
 }
 
