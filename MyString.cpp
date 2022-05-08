@@ -104,9 +104,10 @@ MyString::MyString(char t) {
  * @param str
  */
 MyString::MyString(const char* str) {
-   auto len = strlen(str);
+   int len = 0;
+   while (str[len]) len++;
    recapacity(len);
-   for (unsigned i = 0; i != len; i++) {
+   for (unsigned i = 0; i != (unsigned)len; i++) {
       (*this)[i] = str[i];
    }
    _size = len;
@@ -352,7 +353,7 @@ int MyString::compare(int start1, int len1, const MyString& str,
 
 signed MyString::find(const MyString& str, int start) const {
    if (str.size() == 0) return npos;
-   std::vector<int> nxt(str.size());
+   int* nxt = new int[str.size()];
    nxt[0] = -1;
    for (int i = 1, j = 0; i != (int)str.size(); i++) {
       while (j != -1 && str[i] != str[j]) j = nxt[j];
@@ -370,7 +371,7 @@ signed MyString::find(const MyString& str, int start) const {
 
 signed MyString::rfind(const MyString& str, int start) const {
    if (str.size() == 0) return npos;
-   std::vector<int> nxt(str.size());
+   int* nxt = new int[str.size()];
    nxt[0] = -1;
    int ret = -1;
    for (int i = 1, j = 0; i != (int)str.size(); i++) {
@@ -392,10 +393,11 @@ signed MyString::rfind(const MyString& str, int start) const {
 }
 
 signed MyString::find_first_of(const MyString& str, int start) const {
-   std::set<char> s;
-   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   bool count[256] = {};
+   for (int i = 0; i != (int)str.length(); i++)
+      count[(unsigned)str[i]] = 1;
    for (int i = start; i != (int)length(); i++) {
-      if (s.count((*this)[i])) {
+      if (count[(unsigned)(*this)[i]]) {
          return i;
       }
    }
@@ -403,11 +405,13 @@ signed MyString::find_first_of(const MyString& str, int start) const {
 }
 
 signed MyString::find_last_of(const MyString& str, int start) const {
-   std::set<char> s;
    int ret = -1;
-   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   bool count[256] = {};
+   for (int i = 0; i != (int)str.length(); i++)
+      count[(unsigned)str[i]] = 1;
+
    for (int i = start; i != (int)length(); i++) {
-      if (s.count((*this)[i])) {
+      if (count[(unsigned)((*this)[i])]) {
          ret = i;
       }
    }
@@ -417,10 +421,11 @@ signed MyString::find_last_of(const MyString& str, int start) const {
 
 signed MyString::find_first_not_of(const MyString& str,
                                    int start) const {
-   std::set<char> s;
-   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   bool count[256] = {};
+   for (int i = 0; i != (int)str.length(); i++)
+      count[(unsigned)str[i]] = 1;
    for (int i = start; i != (int)length(); i++) {
-      if (!s.count((*this)[i])) {
+      if (!count[(unsigned)((*this)[i])]) {
          return i;
       }
    }
@@ -429,11 +434,12 @@ signed MyString::find_first_not_of(const MyString& str,
 
 signed MyString::find_last_not_of(const MyString& str,
                                   int start) const {
-   std::set<char> s;
    int ret = -1;
-   for (int i = 0; i != (int)str.length(); i++) s.insert(str[i]);
+   bool count[256] = {};
+   for (int i = 0; i != (int)str.length(); i++)
+      count[(unsigned)str[i]] = 1;
    for (int i = start; i != (int)length(); i++) {
-      if (!s.count((*this)[i])) {
+      if (!count[(unsigned)(*this)[i]]) {
          ret = i;
       }
    }

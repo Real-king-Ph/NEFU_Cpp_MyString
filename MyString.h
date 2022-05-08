@@ -11,12 +11,8 @@
 #ifndef _R_K_STRING_H_E_A_D_E_R_
 #define _R_K_STRING_H_E_A_D_E_R_
 
-#include <cstring>
 #include <iostream>
-#include <istream>
-#include <ostream>
 #include <set>
-#include <vector>
 
 /**
  * @brief MySring is a NEFU_Mirror of std::string
