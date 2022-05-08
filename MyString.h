@@ -27,10 +27,9 @@
  */
 class MyString {
   private:
-   const static unsigned nps = 1e9 + 777;  ///< nps
-   char* _self = nullptr;                  ///< base of MyString
-   unsigned _size = 0;                     ///< size of MyString
-   unsigned _capa = 0;  ///< the capacity of MyString
+   char* _self = nullptr;  ///< base of MyString
+   unsigned _size = 0;     ///< size of MyString
+   unsigned _capa = 0;     ///< the capacity of MyString
 
   private:
    void recapacity(unsigned);
@@ -81,9 +80,11 @@ class MyString {
 
    unsigned size() const;
    unsigned length() const;
-   unsigned npos() const { return nps; }
+   const static unsigned npos = 1e9 + 777;
 
    MyString& append(const MyString&);
+   MyString& append(int, const MyString&);
+   MyString& append(const MyString&, int, int);
    void swap(MyString&);
    MyString& assign(const MyString& str) {
       return this->operator=(str);
@@ -119,6 +120,7 @@ class MyString {
    bool operator>(const MyString&) const;
    bool operator>=(const MyString&) const;
    bool operator==(const MyString&) const;
+   bool operator!=(const MyString&) const;
 
    // * advanced function
 
@@ -174,10 +176,10 @@ class MyString {
     */
    MyString& insert(int pos, int times, const MyString& str);
 
-   int Compare(const MyString&) const;
-   int Compare(int, int, const MyString&) const;
-   int Compare(const MyString&, int, int) const;
-   int Compare(int, int, const MyString&, int, int) const;
+   int compare(const MyString&) const;
+   int compare(int, int, const MyString&) const;
+   int compare(const MyString&, int, int) const;
+   int compare(int, int, const MyString&, int, int) const;
 
    /**
     * @brief 查找子串
@@ -196,8 +198,7 @@ class MyString {
    MyString& replace(int, int, const MyString&);
    MyString& replace(int, int, int, const MyString&);
    MyString& replace(int, int, const MyString&, int, int);
-   MyString& replace(int, int, int, const MyString&, int,
-                     int);  // TODO
+   MyString& replace(int, int, int, const MyString&, int, int);
 
    // * friend function
    /**

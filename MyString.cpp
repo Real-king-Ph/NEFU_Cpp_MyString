@@ -193,6 +193,14 @@ MyString& MyString::append(const MyString& str) {
    return *this;
 }
 
+MyString& MyString::append(int times, const MyString& str) {
+   return this->append(MyString(times, str));
+}
+
+MyString& MyString::append(const MyString& str, int s, int sz) {
+   return this->append(MyString(str, s, sz));
+}
+
 void MyString::swap(MyString& str) {
    std::swap(_size, str._size);
    std::swap(_capa, str._capa);
@@ -244,7 +252,7 @@ MyString& MyString::operator+=(const MyString& str) {
 }
 
 bool MyString::operator<(const MyString& str) const {
-   return this->Compare(str) == -1;
+   return this->compare(str) == -1;
 }
 
 bool MyString::operator<=(const MyString& str) const {
@@ -252,7 +260,7 @@ bool MyString::operator<=(const MyString& str) const {
 }
 
 bool MyString::operator>(const MyString& str) const {
-   return this->Compare(str) == 1;
+   return this->compare(str) == 1;
 }
 
 bool MyString::operator>=(const MyString& str) const {
@@ -260,7 +268,11 @@ bool MyString::operator>=(const MyString& str) const {
 }
 
 bool MyString::operator==(const MyString& str) const {
-   return this->Compare(str) == 0;
+   return this->compare(str) == 0;
+}
+
+bool MyString::operator!=(const MyString& str) const {
+   return this->compare(str) != 0;
 }
 
 // * * * * * * * * * * *
@@ -270,7 +282,7 @@ bool MyString::operator==(const MyString& str) const {
 MyString& MyString::erase(const MyString& str) {
    auto x = 0u;
    x = this->find(str, x);
-   if (x != MyString::npos()) {
+   if (x != MyString::npos) {
       for (int i = x; i != int(size() - str.size()); i++) {
          (*this)[i] = (*this)[i + str.size()];
       }
@@ -312,7 +324,7 @@ MyString& MyString::insert(int pos, int times, const MyString& str) {
    return this->insert(pos, MyString(times, str));
 }
 
-int MyString::Compare(const MyString& str) const {
+int MyString::compare(const MyString& str) const {
    for (unsigned i = 0; i != this->length() && i != str.length();
         i++) {
       if ((*this)[i] > str[i]) return 1;
@@ -322,24 +334,24 @@ int MyString::Compare(const MyString& str) const {
    return (this->length() > str.length()) * 2 - 1;
 }
 
-int MyString::Compare(int start1, int len1,
+int MyString::compare(int start1, int len1,
                       const MyString& str) const {
-   return this->substr(start1, len1).Compare(str);
+   return this->substr(start1, len1).compare(str);
 }
 
-int MyString::Compare(const MyString& str, int start2,
+int MyString::compare(const MyString& str, int start2,
                       int len2) const {
-   return this->Compare(str.substr(start2, len2));
+   return this->compare(str.substr(start2, len2));
 }
 
-int MyString::Compare(int start1, int len1, const MyString& str,
+int MyString::compare(int start1, int len1, const MyString& str,
                       int start2, int len2) const {
    return this->substr(start1, len1)
-       .Compare(str.substr(start2, len2));
+       .compare(str.substr(start2, len2));
 }
 
 signed MyString::find(const MyString& str, int start) const {
-   if (str.size() == 0) return npos();
+   if (str.size() == 0) return npos;
    std::vector<int> nxt(str.size());
    nxt[0] = -1;
    for (int i = 1, j = 0; i != (int)str.size(); i++) {
@@ -348,16 +360,16 @@ signed MyString::find(const MyString& str, int start) const {
       j++;
    }
 
-   for (int i = 0, j = 0; i != (int)size() - start; i++) {
+   for (int i = start, j = 0; i != (int)size(); i++) {
       while (j != -1 && (*this)[i] != str[j]) j = nxt[j];
       j++;
       if (j == (int)str.size()) return i - str.size() + 1;
    }
-   return npos();
+   return npos;
 }
 
 signed MyString::rfind(const MyString& str, int start) const {
-   if (str.size() == 0) return npos();
+   if (str.size() == 0) return npos;
    std::vector<int> nxt(str.size());
    nxt[0] = -1;
    int ret = -1;
@@ -376,7 +388,7 @@ signed MyString::rfind(const MyString& str, int start) const {
       }
    }
    if (ret != -1) return ret;
-   return npos();
+   return npos;
 }
 
 signed MyString::find_first_of(const MyString& str, int start) const {
@@ -387,7 +399,7 @@ signed MyString::find_first_of(const MyString& str, int start) const {
          return i;
       }
    }
-   return npos();
+   return npos;
 }
 
 signed MyString::find_last_of(const MyString& str, int start) const {
@@ -399,7 +411,7 @@ signed MyString::find_last_of(const MyString& str, int start) const {
          ret = i;
       }
    }
-   if (ret == -1) return npos();
+   if (ret == -1) return npos;
    return ret;
 }
 
@@ -412,7 +424,7 @@ signed MyString::find_first_not_of(const MyString& str,
          return i;
       }
    }
-   return npos();
+   return npos;
 }
 
 signed MyString::find_last_not_of(const MyString& str,
@@ -425,14 +437,14 @@ signed MyString::find_last_not_of(const MyString& str,
          ret = i;
       }
    }
-   if (ret == -1) return npos();
+   if (ret == -1) return npos;
    return ret;
 }
 
 MyString& MyString::replace(const MyString& ori,
                             const MyString& tar) {
    auto x = this->find(ori);
-   if (x != (int)npos()) {
+   if (x != (int)npos) {
       (*this) = substr(0, x) + tar + substr(0, x + ori.size());
    }
 
