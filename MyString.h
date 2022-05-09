@@ -12,7 +12,6 @@
 #define _R_K_STRING_H_E_A_D_E_R_
 
 #include <iostream>
-#include <set>
 
 /**
  * @brief MySring is a NEFU_Mirror of std::string

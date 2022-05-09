@@ -1,6 +1,6 @@
 #include <iostream>
 
-// #include "MyString.h"
+#include "MyString.h"
 
 //#define _SELECT
 //如果完成了选做内容，请将此宏_SELECT定义前的注释符号删除
@@ -15,7 +15,7 @@ using namespace std;
 
 // 请将完成的所有代码粘贴在此处，包括类的声明和所有定义
 // ,并注释掉下面一行语句
-typedef string MyString;
+// typedef string MyString;
 //测试时请注释掉上面一行语句
 
 #define output(x) cout << #x << " = " << x << '\n';
