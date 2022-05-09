@@ -366,6 +366,7 @@ signed MyString::find(const MyString& str, int start) const {
       j++;
       if (j == (int)str.size()) return i - str.size() + 1;
    }
+   delete nxt;
    return npos;
 }
 
@@ -388,6 +389,7 @@ signed MyString::rfind(const MyString& str, int start) const {
          j = nxt[j];
       }
    }
+   delete nxt;
    if (ret != -1) return ret;
    return npos;
 }
